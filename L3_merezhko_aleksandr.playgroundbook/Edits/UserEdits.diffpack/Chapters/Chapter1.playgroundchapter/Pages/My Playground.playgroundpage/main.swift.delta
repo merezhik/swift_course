@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>import Foundation
+
+var doorState: String
+
+enum Body: String {
+    case hatchback = "Хэтчбэк"
+    case sedan = "Седан"
+    case offroad = "Внедорожник"
+    case coupe = "Купе"
+    case trunk = "Грузовик"
+}
+enum DoorState: String {
+    case open = "Двери открыты"
+    case close = "Двери закрыты"
+}
+
+enum Engine: String {
+    case work = "работает"
+    case stop = "остановлен"
+}
+
+struct SportCar {
+    var brand: String 
+    var model: String 
+    var countKm: Int
+    var year: Int
+    var luggage: Int
+    var body: String
+    var engine: String
+    
+    init(sportBrand: String, sportModel: String, sportCountKm: Int, sportLuggage: Int, sportYear: Int, Body: String, Engine: String){
+        self.brand = sportBrand
+        self.model = sportModel
+        self.countKm = sportCountKm
+        self.luggage = sportLuggage
+        self.year = sportYear
+        self.body = Body
+        self.engine = Engine
+    }
+    
+    func description() {
+        print("Автомобиль \(brand) \(model) \(year) года выпуска\nПробег: \(countKm) км.\nКузов \(body)\nОбъем багажника \(luggage) л.")
+    }
+    mutating func increaseKm(countKm: Int) -&gt; Int {
+        self.countKm += countKm
+        return countKm
+    }
+    
+    func CountKm(){
+        if countKm &lt;= 5000{
+            print("Состояние: новый")
+        }else if countKm &lt;= 50000 {
+            print("Состояние: рактически новый")
+        }else if countKm &gt; 50000{
+            print("Состояние: Б/У")
+        }
+    }
+    
+    func DoorAct() {
+        if engine == Engine.work.rawValue {
+            print("Функционал автомобиля: \(DoorState.close.rawValue), двигатель \(Engine.work.rawValue)")
+        }else if engine == Engine.stop.rawValue {
+            print("Функционал автомобиля: \(DoorState.open.rawValue), двигатель \(Engine.stop.rawValue)")
+        }
+    }
+}
+
+struct TrunkCar {
+    var brand: String 
+    var model: String 
+    var countKm: Int
+    var year: Int
+    var luggage: Int
+    var body: String
+    var engine: String
+    
+    init(trunkBrand: String, trunkModel: String, trunkCountKm: Int, trunkLuggage: Int, trunkYear: Int, Body: String, Engine: String){
+        self.brand = trunkBrand
+        self.model = trunkModel
+        self.countKm = trunkCountKm
+        self.luggage = trunkLuggage
+        self.year = trunkYear
+        self.body = Body
+        self.engine = Engine
+    }
+    
+    func description() {
+        print("Автомобиль \(brand) \(model) \(year) года выпуска\nПробег: \(countKm) км.\nКузов \(body)\nОбъем багажника \(luggage) л.")
+    }
+    mutating func increaseKm(countKm: Int) -&gt; Int {
+        self.countKm += countKm
+        return countKm
+    }
+    
+    func CountKm(){
+        if countKm &lt;= 5000{
+            print("Состояние: новый")
+        }else if countKm &lt;= 50000 {
+            print("Состояние: практически новый")
+        }else if countKm &gt; 50000{
+            print("Состояние: Б/У")
+        }
+    }
+    
+    func DoorAct() {
+        if engine == Engine.work.rawValue {
+            print("Функционал автомобиля: \(DoorState.close.rawValue), двигатель \(Engine.work.rawValue)")
+        }else if engine == Engine.stop.rawValue {
+            print("Функционал автомобиля: \(DoorState.open.rawValue), двигатель \(Engine.stop.rawValue)")
+        }
+    }
+}
+
+var skyline = SportCar (sportBrand: "Nissan", sportModel: "SkyLine", sportCountKm: 1000, sportLuggage: 100, sportYear: 2020, Body: Body.sedan.rawValue, Engine: Engine.work.rawValue)
+var amg = SportCar (sportBrand: "Mersedes", sportModel: "AMG", sportCountKm: 55000, sportLuggage: 80, sportYear: 2019, Body: Body.coupe.rawValue, Engine: Engine.stop.rawValue)
+var maz = TrunkCar(trunkBrand: "МАЗ", trunkModel: "2305", trunkCountKm: 30000, trunkLuggage: 3000, trunkYear: 2019, Body: Body.trunk.rawValue, Engine: Engine.stop.rawValue)
+var kraz = TrunkCar(trunkBrand: "КРАЗ", trunkModel: "1276", trunkCountKm: 10000, trunkLuggage: 5000, trunkYear: 2018, Body: Body.trunk.rawValue, Engine: Engine.work.rawValue)
+
+skyline.description()
+skyline.CountKm()
+skyline.DoorAct()
+print(" ")
+skyline.increaseKm(countKm: 40000)
+skyline.description() //тот же скайлайн с увеличенным пробегом, к другим авто применять не стал
+skyline.CountKm()
+skyline.DoorAct()
+print(" ")
+amg.description()
+amg.CountKm()
+amg.DoorAct()
+print(" ")
+maz.description()
+maz.CountKm()
+maz.DoorAct()
+print(" ")
+kraz.description()
+kraz.CountKm()
+kraz.DoorAct()
+print(" ")
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 4374}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
