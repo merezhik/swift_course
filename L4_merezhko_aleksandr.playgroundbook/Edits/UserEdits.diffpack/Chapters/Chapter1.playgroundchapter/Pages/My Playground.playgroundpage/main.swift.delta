@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>import Foundation
+
+enum Body: String {
+    case hatchback = "Хэтчбэк"
+    case sedan = "Седан"
+    case offroad = "Внедорожник"
+    case coupe = "Купе"
+    case trunk = "Грузовик"
+}
+
+enum Engine: String {
+    case start = "Двигатель работает"
+    case stop = "Двигатель остановлен"
+}
+
+enum DoorState: String {
+    case open = "Двери открыты"
+    case close = "Двери закрыты"
+}
+
+enum LuggageState: String {
+    case empty = "Багажник пуст"
+    case full = "Багажник полностью загружен"
+    case partFull = "Багажник заполнен неполностью"
+    case emptyBW = "Кузов пуст"
+    case fullBW = "Кузов полностью загружен"
+    case partFullBW = "Кузов заполнен неполностью"
+    case notLoad = "Недопустимый объем груза"
+}
+
+class Car {
+    var brand: String 
+    let model: String 
+    var countKm: Double
+    var year: Int
+    var luggage: Double
+    let body: String
+    var engine: String
+    var doorState: String
+    
+    
+    init(brand: String, model: String, countKm: Double, luggage: Double, year: Int, Body: String, Engine: String, DoorState: String){
+        self.brand = brand
+        self.model = model
+        self.countKm = countKm
+        self.luggage = luggage
+        self.year = year
+        self.body = Body
+        self.engine = Engine
+        self.doorState = DoorState
+    }
+    
+    func description() {
+        print("Автомобиль \(brand) \(model) \(year) года выпуска\nПробег: \(countKm) км.\nКузов \(body)\nОбъем багажника \(luggage) л.")
+    }
+    
+    func increaseKm(countKm: Double) -&gt; Double {
+        self.countKm += countKm
+        return countKm
+    }
+    
+    func CountKm(){
+        if countKm &lt;= 5000{
+            print("Состояние: новый")
+        }else if countKm &lt;= 50000 {
+            print("Состояние: практически новый")
+        }else if countKm &gt; 50000{
+            print("Состояние: Б/У")
+        }
+    }
+    
+    func DoorAct(doorAction: DoorState) {
+        switch doorAction{
+        case .open:
+            print(doorAction.rawValue)
+            self.doorState = DoorState.open.rawValue
+        case .close:
+            print(doorAction.rawValue)
+            self.doorState = DoorState.close.rawValue
+        }
+    }
+    
+    func ActEngine(actEng: Engine) {
+        switch actEng{
+        case .start:
+            print(actEng.rawValue)
+            self.engine = Engine.start.rawValue
+        case .stop:
+            print(actEng.rawValue)
+            self.engine = Engine.stop.rawValue
+        }
+    }
+    
+}
+
+class SportCar: Car{
+    
+    var luggageChange: Double = 0.0
+    var sportW: String = " "
+    
+    func lugChange (luggageChange: Double) {
+            if luggageChange == 0 {
+                print(LuggageState.empty.rawValue)
+            }else if luggageChange == luggage {
+                print(LuggageState.full.rawValue)
+            }else if luggageChange  &gt; 0 &amp;&amp; luggageChange &lt; luggage {
+                print(LuggageState.partFull.rawValue)
+            }else if luggageChange  &lt; 0 || luggageChange &gt; luggage {
+                print(LuggageState.notLoad.rawValue)
+            }
+    }
+    
+    enum WindState: String {
+        case open = "Окна открыты"
+        case close = "Окна закрыты"
+    }
+    
+    func WindApp(sportW: WindState){
+        switch sportW {
+        case .open:
+            print(sportW.rawValue)
+            self.sportW = WindState.open.rawValue
+        case .close:
+            print(sportW.rawValue)
+            self.sportW = WindState.close.rawValue
+        }
+    }
+    
+}
+    
+class TrunkCar: Car{
+    
+    var luggageChange: Double = 0.0
+    var trunkB: String = " "
+    func lugChange (luggageChange: Double) {
+        if luggageChange == 0 {
+            print(LuggageState.emptyBW.rawValue)
+        }else if luggageChange == luggage {
+            print(LuggageState.fullBW.rawValue)
+        }else if luggageChange  &gt; 0 &amp;&amp; luggageChange &lt; luggage {
+            print(LuggageState.partFullBW.rawValue)
+        }else if luggageChange  &lt; 0 || luggageChange &gt; luggage {
+            print(LuggageState.notLoad.rawValue)
+        }
+    }
+    
+    enum BodyWorkState: String {
+        case up = "Кузов поднят"
+        case down = "Кузов опущен"
+    }
+    func bodyWorkApp(trunkB: BodyWorkState){
+        switch trunkB {
+        case .up:
+            print(trunkB.rawValue)
+            self.trunkB = BodyWorkState.up.rawValue
+        case .down:
+            print(trunkB.rawValue)
+            self.trunkB = BodyWorkState.down.rawValue
+        }
+    }
+}
+
+var honda = Car(brand: "Honda", model: "Civic", countKm: 15000, luggage: 35, year: 2015, Body: Body.sedan.rawValue, Engine: Engine.stop.rawValue, DoorState: DoorState.close.rawValue)
+
+honda.description()
+honda.CountKm()
+honda.DoorAct(doorAction: .close)
+honda.ActEngine(actEng: .start)
+print("")
+
+var mersedes = SportCar(brand: "Mersedes", model: "AMG", countKm: 25346.56, luggage: 30.5, year: 2019, Body: Body.coupe.rawValue, Engine: Engine.stop.rawValue, DoorState: DoorState.close.rawValue)
+
+mersedes.description()
+mersedes.CountKm()
+mersedes.DoorAct(doorAction: .close)
+mersedes.WindApp(sportW: .open)
+mersedes.ActEngine(actEng: .start)
+mersedes.lugChange(luggageChange: 10)
+print("")
+mersedes.increaseKm(countKm: 10000)
+mersedes.description()
+mersedes.CountKm()
+mersedes.DoorAct(doorAction: .close)
+mersedes.WindApp(sportW: .open)
+mersedes.ActEngine(actEng: .stop)
+mersedes.lugChange(luggageChange: 0)
+print("")
+
+var kamaz = TrunkCar(brand: "Камаз", model: "OMG!-6503", countKm: 105678.92, luggage: 20000, year: 2018, Body: Body.trunk.rawValue, Engine: Engine.start.rawValue, DoorState: DoorState.close.rawValue)
+
+kamaz.description()
+kamaz.CountKm()
+kamaz.DoorAct(doorAction: .close)
+kamaz.ActEngine(actEng: .start)
+kamaz.lugChange(luggageChange: 5000)
+print("")
+kamaz.description()
+kamaz.CountKm()
+kamaz.DoorAct(doorAction: .open)
+kamaz.ActEngine(actEng: .stop)
+kamaz.bodyWorkApp(trunkB: .up)
+kamaz.lugChange(luggageChange: 0)
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 5861}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
