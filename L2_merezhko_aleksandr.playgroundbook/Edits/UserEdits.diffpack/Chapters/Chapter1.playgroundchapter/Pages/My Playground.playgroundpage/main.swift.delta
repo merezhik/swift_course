@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>import UIKit
+
+// задание 3
+
+var num: [Int] = []
+var n = 0
+for i in 1 ... 100 {
+    n = n+1
+    num.append(i)
+}
+print("Нарастающие числа от 1 до 100: \(num)\n")
+
+// задание 1
+
+var evenNum: [Int] = []
+for i in num{
+    if i % 2 == 0{
+        evenNum.append(i)
+    }
+}
+print("Четные: \(evenNum)\n")
+
+// задание 2
+
+var threeNum: [Int] = []
+for i in num{
+    if i % 3 == 0{
+        threeNum.append(i)
+    }
+}
+print("Делятся на 3 без остатка: \(threeNum)\n")
+
+// задание 4
+var newNum = num.filter {$0 % 2 != 0 &amp;&amp; $0 % 3 == 0}
+print("Нечетные и делятся на 3: \(newNum)\n")
+// С дополнительными заданиями я буду разбираться отдельно дополнительно по готовому решению, потому что надо вспомнить математику и разобраться с ней чтобы разобраться с принципами кода, использованного для решения)
+</string>
+			<key>ModifiedRange</key>
+			<string>{1, 783}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{1, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
