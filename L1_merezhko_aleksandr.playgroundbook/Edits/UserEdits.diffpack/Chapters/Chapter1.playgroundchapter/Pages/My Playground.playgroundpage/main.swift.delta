@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>import Foundation
+//Квадратное уравнение
+
+print("Задание1.\nКвадратное уравнение\n")
+print("Решаем квадратное уравнение x^2+4x+2=0\n")
+
+var a:Double = 1; var b:Double = 4; var c:Double = 2
+
+print("Для решения необходимо найти дискриминант данного уравнения по\nформуле D=b^2-4ac\n")
+
+var d:Double = (b*b-(4*a*c))
+var dS:Double = sqrt(d)
+
+print("Дискриминант D = \(NSString(format: "%.2f", d))\n")
+if(d &lt; 0){
+    print("Дискриминант меньше 0, уравнение не имеет решений")
+}
+if(d == 0){
+    var x:Double = -(b/(2*a))
+    print("Дискриминант равен 0, уравнение имеет одно решение по формуле x=-b/2a и равное \(NSString(format: "%.2f", x))\n")
+} 
+if(d &gt; 0){
+    var x1:Double = (-b+dS)/(2*a)
+    var x2:Double = (-b-dS)/(2*a)
+    print("Дискриминант больше 0, уравнение имеет два решения:\nx1=-b+sqrt(D)/2a, x2=-b-sqrt(D)/2a\nx1 = \(NSString(format: "%.2f", x1)), x2 = \(NSString(format: "%.2f", x2))\n")
+}
+// Треугольник
+print("Задание2.\nТреугольник\n")
+
+var at:Double = 3
+var bt:Double = 4
+
+print("Даны катеты прямоугольного треугольника a = \(NSString(format: "%.2f", at)) и b = \(NSString(format: "%.2f", bt)).\nНеобходимо определить гипотенузу данного треугольника C,\nего периметр P и площадь S\n")
+
+var ct = sqrt(at*at+bt*bt)
+var p = at+bt+ct
+var s = (at*bt)/2
+
+print("Гипотенуза треугольника c = \(NSString(format: "%.2f", ct))\nПериметр треугольника P = \(NSString(format: "%.2f", p))\nПлощадь треугольника S = \(NSString(format: "%.2f", s))\n")
+//Вклад
+print("Задание 3.\nВклад\n")
+
+var deb: Double = 5000
+var pers: Double = 10
+var time: Int = 5
+pers = pers/100
+var sum = deb + (deb*pers)//1 год
+var i = 1
+while i &lt; time {
+    i=i+1
+    sum = sum + (sum*pers)
+}; 
+
+print("Сумма вклада \(NSString(format: "%.2f", deb))руб. под \(NSString(format: "%.0f", pers*100))% годовых через \(time) лет составит \n\(NSString(format: "%.2f", sum))руб.\n")
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 1850}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
